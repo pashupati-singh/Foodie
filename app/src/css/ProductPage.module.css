@@ -1,0 +1,25 @@
+.container{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    box-shadow: rgba(240, 130, 40, 0.993) 0px 3px 8px;
+}
+.box1{  
+    width: 20%;
+    height: 500px;
+    background-color: rgb(223, 209, 62);
+    text-align: start;
+    
+}
+.box2{  
+    width: 80%;
+    height: 500px;
+    background-color: rgb(228, 228, 224);
+}
+.image{
+    position: relative;
+    top: 10%;
+    width: 90%;
+    height: 80%;
+   margin: auto;
+}

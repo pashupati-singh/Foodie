@@ -1,0 +1,50 @@
+
+.nav{
+  position: fixed;
+  top: 3%;
+  left: 80%;
+  transform: translate(-50%, -50%);
+  color: rgb(245, 241, 241);
+  font-size: 16px;
+  text-align: center;
+  cursor: pointer;
+ 
+}
+
+.navText{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    font-size: 15px;
+    gap: 15px; 
+    padding: 10px; 
+}
+
+.middle{
+   width: 30%;
+   height: 50%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: rgb(245, 241, 241); 
+      display: flex;
+  align-items: center; 
+  
+}
+
+.font2{
+    font-family: Okra, Helvetica, sans-serif;
+    font-size: 2rem;
+}
+
+.font1{
+    font-family: "Goudy Bookletter 1911", ui-sans-serif;
+    font-size: 6rem;
+}
+.Link1{
+    color: white;
+    text-decoration: none;
+    list-style: none;
+
+}

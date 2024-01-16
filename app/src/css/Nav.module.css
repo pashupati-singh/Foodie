@@ -1,0 +1,40 @@
+.nav{
+    width: 100%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav img{
+    width: 200px;
+    height: 100px;
+}
+.icon{
+    cursor: pointer;
+    font-size: 40px;
+    margin: 10px;
+}
+.icon:hover{
+    color: rgb(93, 152, 201);
+}
+.login{
+    width: 30%;
+    display: flex;
+    justify-content: space-evenly;
+
+}
+
+.home{
+    width: 30%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.HomeIcon{
+    font-size: 30px;
+}
+
+.HomeIcon:hover{
+    color: rgb(99, 226, 99);
+}
