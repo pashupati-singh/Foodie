@@ -5,14 +5,15 @@
     box-shadow: rgba(240, 130, 40, 0.993) 0px 3px 8px;
 }
 .box1{  
-    width: 20%;
+    /* margin-top: -30px; */
+    width: 30%;
     height: 500px;
     background-color: rgb(223, 209, 62);
     text-align: start;
     
 }
 .box2{  
-    width: 80%;
+    width: 60%;
     height: 500px;
     background-color: rgb(228, 228, 224);
 }
@@ -22,4 +23,20 @@
     width: 90%;
     height: 80%;
    margin: auto;
+}
+.edit1{
+    background-color: rgb(31, 219, 31);
+    margin-bottom: -60px;
+}
+.edit3{
+    background-color: rgb(230, 183, 29);
+    margin-bottom: -60px;
+}
+.edit2{
+    background-color: rgb(31, 178, 219);
+    margin-bottom: -60px;
+}
+b{
+    font-size: 20px;
+    font-weight: 600;
 }

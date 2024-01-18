@@ -1,9 +1,9 @@
-import { LOGINFAILURE, LOGINREQUEST, LOGINSUCCESS, SIGNUPFAILURE, SIGNUPREQUEST, SIGNUPSUCCESS } from "./actiontype"
+import {SIGNUPFAILURE, SIGNUPREQUEST, SIGNUPSUCCESS } from "./actiontype"
 
 
 
 const initialState = {
-    name:"",
+    register : false,
     msg:"",
     loading:false,
     error:false
@@ -11,9 +11,9 @@ const initialState = {
 
 export const reducer = (state=initialState,action)=>{
     switch(action.type){
-        case SIGNUPREQUEST : return{ ...state,loading:true}
-        case SIGNUPSUCCESS : return {...state,loading:false,msg:action.payload.msg,name:action.payload.name}
-        case SIGNUPFAILURE : return{...state,loading:false,error:true}
+        case SIGNUPREQUEST : return{ ...state,loading:true, register : false}
+        case SIGNUPSUCCESS : return {...state,loading:false,register:true,msg:action.payload.msg}
+        case SIGNUPFAILURE : return{...state,loading:false,error:true, register : false}
         default : return state
     }
 }

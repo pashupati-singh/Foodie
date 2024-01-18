@@ -7,7 +7,7 @@ import { Foodpage } from './Foodpage';
 import { NavBarFoodiePage } from './NavBarFoodiePage';
 import { FilterPage } from './FilterPage';
 import { Footer } from './Footer';
-import { Page, Pagination } from './Pagination';
+import { Page } from './Pagination';
 
 
 export const Singlepage = () => {
@@ -17,10 +17,12 @@ export const Singlepage = () => {
   const [food,setFood] = useState([])
   const {text} = useParams();
  const disptach = useDispatch()
+ 
+// const {token} = useSelector((store)=>store.authReducer)
    
   const FoodData = data1.filter((el)=>(el.location===text))
 
-
+  //  console.log(token);
   const handlePage = (page) => {
       setData1(page)
 }

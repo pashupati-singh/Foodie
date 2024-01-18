@@ -1,0 +1,49 @@
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .productcard {
+    display: flex;
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+    padding: 15px;
+  }
+  
+  .productimage {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    margin-right: 20px;
+  }
+  
+  .productdetails {
+    flex-grow: 1;
+  }
+  
+  .productdetails h3 {
+    margin: 0;
+  }
+  
+  .productdetails p {
+    margin: 5px 0;
+    color: #555;
+  }
+  
+  .quantitybuttons {
+    display: flex;
+    align-items: center;
+  }
+  
+  .quantitybutton {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    padding: 5px;
+    cursor: pointer;
+  }
+  
+  .totalamount {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+  }

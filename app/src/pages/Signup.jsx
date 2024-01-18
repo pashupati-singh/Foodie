@@ -9,17 +9,27 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import style from "../css/login.module.css"
+import { useDispatch, useSelector } from 'react-redux';
+import { SignFunction } from '../Redux/signup/action';
 
 
 export const Signup = () => {
   const [name,setName] = useState("");
   const[email,setEmail]= useState("");
   const [password,setPassword] = useState("");
+  const {register} = useSelector((store)=>store.signUpReducer)
+  const {msg} = useSelector((store)=>store.signUpReducer)
+  const dispatch = useDispatch();
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(name,password,email)
+      const object = {name,password,email}
+      dispatch(SignFunction(object))
   };
+
+  if(register){
+    alert(msg)
+  }
 
   return (
     <div className={style.LoginBox}>

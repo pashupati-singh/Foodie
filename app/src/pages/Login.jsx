@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-// import { Container, Paper, Typography, TextField, Button } from '@mui/material';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -9,7 +8,6 @@ import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-// import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import {useDispatch, useSelector} from "react-redux"
@@ -26,6 +24,7 @@ export const Login = () => {
 
         const handleLogin = (e) => {
           e.preventDefault();
+          console.log(email,password)
           const object = {email,password}
               dispatch(LoginFunction(object))
 

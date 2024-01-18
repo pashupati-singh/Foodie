@@ -3,12 +3,19 @@ import { NavBarFoodiePage } from './NavBarFoodiePage'
 import { Footer } from './Footer'
 import style from "../css/ProductPage.module.css"
 import { useParams } from 'react-router-dom'
+import Image from "../Image/foodproduct.png"
+import { Button } from '@mui/material'
+import CheckIcon from '@mui/icons-material/Check';
+import { useDispatch, useSelector } from 'react-redux'
+import { cartProductAddFunction } from '../Redux/CartRedux/action'
 
 export const Productpage = () => {
-  const[data,setData] = useState({})
+  const[data1,setData] = useState({})
   const id = useParams();
-  
+  const dispatch = useDispatch();
+const {token} = useSelector((store)=>store.authReducer)
 
+console.log("hekoo")
 
   const FetchData = async() =>{
      try {
@@ -20,21 +27,22 @@ export const Productpage = () => {
          console.log(error);
      }
   }
-    console.log(data);
+    const {description,food,image,location,price,quantity,rating,restaurant,type} = data1;
+ 
+
+    const handleCardButton = () =>{
+     const obj = {
+        description,food,image,location,price,quantity,rating,restaurant,type
+     }
+     
+
+      dispatch(cartProductAddFunction(obj,token))
+
+    }
 
     useEffect(()=>{
       FetchData()
     },[])
-
-  // location:"Lucknow" price:298.53 quantity : 8rating
-  //   : 
-  //   2.6
-  //   restaurant
-  //   : 
-  //   "Masala Grill"
-  //   type
-  //   : 
-  //   "Veg"
 
   return (
     <div>
@@ -43,15 +51,27 @@ export const Productpage = () => {
       
              <div className={style.container}>
              <div className={style.box1}>
-             {/* <img src={data.image} alt="errr" className={style.image} /> */}
-            <div style={{marginLeft:"10px"}}> <h2 className={style.name}>{data.food}</h2>
+             <div style={{width:"80%"}}>
+             <img src={Image} alt="errr" width={"400px"}  />
+             </div>
+            <div style={{marginLeft:"10px",marginTop:"-30px"}}> <h2 className={style.name}>{food}</h2>
               
-              <p>Resturant:{data.restaurant}</p>
-              <p>{data.type === "veg" ? "Vegetarian":"Non-Vegetarian"}</p>
-              <p>{data.description}</p></div>
+              <p><b>Resturant:</b>{restaurant}</p>
+              <p><b>Price:</b>{price} for you</p>
+              <p><b>Description:</b>{description}</p>
+              <p><b>Quantity: {quantity}</b></p>
+              </div>
+              <div style={{display:"flex",justifyContent:"space-evenly",alignItems:"end"}}>
+                {/* {changed? */}
+                <Button className={style.edit1} onClick={handleCardButton} variant="contained">Add to Cart</Button>
+                // :<Button className={style.edit3} variant="contained"><CheckIcon /> Added to cart</Button>
+                {/* } */}
+              
+              <Button className={style.edit2} variant="contained">Buy now</Button>
+              </div>
              </div>
              <div className={style.box2}>
-              <img src={data.image} alt="errr" className={style.image} />
+              <img src={image} alt="errr" className={style.image} />
              </div>
            </div>
      

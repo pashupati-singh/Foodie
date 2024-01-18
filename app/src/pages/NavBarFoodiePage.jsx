@@ -11,6 +11,8 @@ import { Link } from 'react-router-dom';
 export const NavBarFoodiePage = ({handleSearching}) => {
   const [search,setSearch] = useState("");
   const {text} = useSelector((store)=>store.foodReducer)
+  const {name} = useSelector((store)=>store.authReducer)
+  const {isAuth} = useSelector((store)=>store.authReducer)
   const [location,setLocation] = useState(false)
 
 
@@ -42,10 +44,13 @@ export const NavBarFoodiePage = ({handleSearching}) => {
             </div>
             <div className={style.login}>
                 <p>
-                    <Link to="/login">Login</Link>
+                {isAuth? <h3>{name}</h3>:<Link to="/login">Login</Link>}
                 </p>
-                <p>
+                <p style={{textAlign:"center"}}>
                     <Link to="/sign">Signup</Link>
+                </p>
+                <p style={{textAlign:"center"}}>
+                    <Link to="/cart">CART</Link>
                 </p>
             </div>
         </div>
