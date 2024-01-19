@@ -15,7 +15,7 @@ export const Productpage = () => {
   const dispatch = useDispatch();
 const {token} = useSelector((store)=>store.authReducer)
 
-console.log("hekoo")
+// console.log("hekoo")
 
   const FetchData = async() =>{
      try {

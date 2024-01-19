@@ -2,56 +2,94 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { cartGetFunction } from '../Redux/CartRedux/action'
 import style from "../css/Cart.module.css"
+import Image from "../Image/foodies.png"
+import { StepperFun } from './Stepper'
+import { CartListPage } from './CartListPage'
+import LocalOfferIcon from '@mui/icons-material/LocalOffer';
+import { Button } from '@mui/material'
 
 export const CartPage = () => {
    const {cart} = useSelector((store)=>store.cartReducer)
    const dispatch = useDispatch()
    const {token} = useSelector((store)=>store.authReducer)
    const [totalAmount, setTotalAmount] = useState(0);
-   
-//   console.log(cart);
-      const FetchData = async () =>{
-        // console.log(token);
-          dispatch(cartGetFunction(token))
-      }
-  useEffect(()=>{
-    FetchData()
-  },[token])
+   const [final, setFinal] = useState(0);
 
-  useEffect(() => {
+  
+   useEffect(() => {
     calculateTotalAmount();
   }, [cart]);
 
   const calculateTotalAmount = () => {
     const amount = cart.reduce((total, item) => total + item.price * item.quantity, 0);
     setTotalAmount(amount);
+    setFinal(amount+40)
   };
 
-  const handleQuantityChange = (productId, newQuantity) => {
-    // You need to dispatch an action to update the quantity in the cart
-    // This is just a placeholder; you should replace it with the actual action
-    // dispatch(updateCartQuantityAction(productId, newQuantity));
-  };
+   
+
+      const FetchData = async () =>{
+          dispatch(cartGetFunction(token))
+      }
+  useEffect(()=>{
+    FetchData()
+  },[token])
+
 
   return (
+    <div>
+
+   <div className={style.nav}> 
+    <img src={Image} alt="err" />
+    <div className={style.stepper}>
+
+   <StepperFun />
+    </div>
+   </div>
+    
     <div className={style.container}>
-    <h1>Cart Page</h1>
+    <div className={style.container1}>
+
+
     {cart.map((item) => (
       <div key={item._id} className={style.productcard}>
-        <img className={style.productimage} src={item.image} alt={item.food} style={{ width: '100px' }} />
-        <h3 className={style.productdetails}>{item.food}</h3>
-        <p className={style.productdetails}>Description: {item.description}</p>
-        <p className={style.productdetails}>Price: {item.price}₹</p>
-        <p className={style.productdetails}>Quantity: {item.quantity}</p>
-        <button className={style.quantitybuttons} onClick={() => handleQuantityChange(item._id, item.quantity - 1)}>
-          Decrease Quantity
-        </button>
-        <button className={style.quantitybutton} onClick={() => handleQuantityChange(item._id, item.quantity + 1)}>
-          Increase Quantity
-        </button>
-      </div>
-    ))}
-    <p className={style.totalamount}>Total Amount: ${totalAmount}</p>
+        <CartListPage {...item} />
+  </div>
+  ))}
+
+</div>
+
+<div className={style.container2}>
+   
+   <div>
+    <p style={{fontWeight:"bold" , textAlign:"left"}}>COUPONS</p>
+    <div style={{display:"flex",justifyContent:"space-between",alignItems:"center"}}>
+      <div style={{display:"flex",justifyContent:"space-between",alignItems:"center"}}> <LocalOfferIcon /><p style={{textAlign:"left", fontSize:"20px",fontFamily:"fantasy"}}>Apply Coupons</p></div>
+      <Button variant="contained">Apply</Button>
+    </div>
+    <p style={{textAlign:"left",marginTop:"-10px"}}>100₹ OFF on this order</p>
+   </div>
+  <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginTop:"20px",fontFamily: "Gill Sans, sans-serif"}}>
+    <div>Total Price Rs.</div>
+    <div>{totalAmount.toFixed(2)}₹</div>
+  </div>
+  <div style={{display:"flex",justifyContent:"space-between",alignItems:"center"}}>
+    <div>Coupon Discount  Rs.</div>
+    <div>-100₹</div>
+  </div>
+  <div style={{display:"flex",justifyContent:"space-between",alignItems:"center"}}>
+    <div>Delivery Charge Rs.</div>
+    <div>60₹</div>
+  </div>
+  <div style={{display:"flex",justifyContent:"space-between",alignItems:"center", marginTop:"20px"}}>
+    <div>Final Amount Rs.</div>
+    <div>{final.toFixed(2)}</div>
+  </div>
+  <Button variant="contained" color='secondary' style={{width:"100%" , marginTop:"15px"}}>Place Order</Button>
+
+</div>
+    </div>
   </div>
   )
 }
+

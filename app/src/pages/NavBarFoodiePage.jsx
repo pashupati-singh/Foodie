@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import image from "../Image/foodies.png"
 import style from "../css/Nav.module.css"
-import { TextField,Box, Button } from '@mui/material'
+import { TextField,Box, Button, Badge } from '@mui/material'
 import SearchIcon from '@mui/icons-material/Search';
 import HomeIcon from '@mui/icons-material/Home';
 import { useSelector } from 'react-redux';
 import { Locationpage } from './Locationpage';
 import { Link } from 'react-router-dom';
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 
 export const NavBarFoodiePage = ({handleSearching}) => {
   const [search,setSearch] = useState("");
@@ -14,11 +15,15 @@ export const NavBarFoodiePage = ({handleSearching}) => {
   const {name} = useSelector((store)=>store.authReducer)
   const {isAuth} = useSelector((store)=>store.authReducer)
   const [location,setLocation] = useState(false)
-
+  const {cart} = useSelector((store)=>store.cartReducer)
+  const [cartValue,setCartValue] = useState(0)
 
   const handleClick = () =>{
     handleSearching(search)
   }
+  useEffect(()=>{
+    setCartValue(cart.length);
+  },[cart])
 
   return (
     <div>
@@ -50,7 +55,10 @@ export const NavBarFoodiePage = ({handleSearching}) => {
                     <Link to="/sign">Signup</Link>
                 </p>
                 <p style={{textAlign:"center"}}>
-                    <Link to="/cart">CART</Link>
+                    <Link to="/cart">
+                    <Badge badgeContent={cartValue} color="primary">
+                    <AddShoppingCartIcon color="action" />
+                    </Badge></Link>
                 </p>
             </div>
         </div>
