@@ -25,7 +25,7 @@ import { Signup } from '../pages/Signup';
 import { HomePage } from '../pages/HomePage';
 import { Productpage } from '../pages/Productpage';
 import { Singlepage } from '../pages/Singlepage';
-import { CartPage } from '../pages/CartPage';
+import { StepperFun } from '../pages/Stepper';
 
 export const MainRouters = () => {
   return (
@@ -37,7 +37,7 @@ export const MainRouters = () => {
       {/* <Route path='/product' element={<Productpage />} /> */}
       <Route path="/product/:text" element={<Singlepage />} />
       <Route path="/product/:text/:_id" element={<Productpage />} />
-      <Route path='/cart' element={<CartPage />} />
+      <Route path='/cart' element={<StepperFun />} />
     </Routes>
   );
 };

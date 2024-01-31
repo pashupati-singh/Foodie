@@ -2,26 +2,26 @@
    width: 100%;
    display: flex;
    justify-content: space-between;
-   /* align-items: center; */
-
   }
    
   .container1{
     width: 65%;
-    background-color: cadetblue;
+    border: 1px solid rgb(94, 92, 92);
+    background-color: rgb(196, 238, 239);
   }
 
   .container2{
 padding:  10px;
 width: 35%;
-background-color: rgb(135, 205, 205);
+border: 1px solid rgb(94, 92, 92);
+background-color: rgb(193, 235, 235);
 
   }
 
 
   .productcard {
     display: flex;
-    border: 1px solid #ddd;
+    border: 1px solid #ffffff;
     margin-bottom: 20px;
     padding: 15px;
     width: 95%;
@@ -32,6 +32,7 @@ background-color: rgb(135, 205, 205);
     height: 150px;
     object-fit: cover;
     margin-right: 20px;
+    margin-top: 40px;
   }
   
   .productdetails {

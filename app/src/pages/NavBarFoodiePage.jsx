@@ -4,10 +4,11 @@ import style from "../css/Nav.module.css"
 import { TextField,Box, Button, Badge } from '@mui/material'
 import SearchIcon from '@mui/icons-material/Search';
 import HomeIcon from '@mui/icons-material/Home';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Locationpage } from './Locationpage';
 import { Link } from 'react-router-dom';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import { cartGetFunction } from '../Redux/CartRedux/action';
 
 export const NavBarFoodiePage = ({handleSearching}) => {
   const [search,setSearch] = useState("");
@@ -17,20 +18,32 @@ export const NavBarFoodiePage = ({handleSearching}) => {
   const [location,setLocation] = useState(false)
   const {cart} = useSelector((store)=>store.cartReducer)
   const [cartValue,setCartValue] = useState(0)
+  const {token} = useSelector((store)=>store.authReducer)
+
+  const dispatch = useDispatch()
 
   const handleClick = () =>{
     handleSearching(search)
   }
   useEffect(()=>{
     setCartValue(cart.length);
-  },[cart])
+  },[cartValue])
+
+  
+  const FetchData = async (token) =>{
+    dispatch(cartGetFunction(token))
+}
+useEffect(()=>{
+FetchData(token)
+},[token])
+
 
   return (
     <div>
         <div className={style.nav1}>
         <div className={style.nav}>
             <div className={style.home}>
-            <img src={image} alt="error" />
+            <Link to={`/product/${text}`}><img src={image} alt="error" /></Link>
             <div style={{display:"flex",justifyContent:"center",alignItems:"center"}} onClick={()=>setLocation(!location)}>
             <HomeIcon color="success" className={style.HomeIcon}  />
             <p style={{color:"green", fontWeight:"bolder", fontSize:"20px"}}>{text}</p>

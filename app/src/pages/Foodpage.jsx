@@ -8,7 +8,7 @@ export const Foodpage = ({_id,description,food,image,location,price,quantity,rat
   return (
   
       <div >
-        <Link to={`./${_id}`}><img className={style.image} src={image} alt="Food Image" /></Link>
+        <Link to={`./${_id}`}><img className={style.image} src={image} alt="FoodImage" /></Link>
         <div style={{lineHeight: ".4"}}>
           <div style={{display:"flex",justifyContent:"space-around"}}>
           <p style={{textAlign:"start",fontWeight:"600",fontFamily: "Century Gothic,Verdana,sans-serif", fontSize:"20px",marginLeft:"-40px" }}>{food}</p>

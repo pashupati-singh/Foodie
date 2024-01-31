@@ -14,7 +14,7 @@ const initialState={
 export const reducer = (state=initialState,action) =>{
     switch(action.type){
         case FOOD_REQUEST : return {...state,isLoading:true}
-        case FOOD_SUCCESS : return {...state,data:action.payload}
+        case FOOD_SUCCESS : return {...state,data:action.payload,text:action.payload1}
         case FOOD_FAILURE : return {...state,isLoading:false,isError:true}
         default : return state
     }

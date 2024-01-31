@@ -40,7 +40,7 @@ const handleSearching = (value)=>{
 
  useEffect(()=>{
   disptach(foodFunction(text))
-},[])
+},[text])
 
 
   return (

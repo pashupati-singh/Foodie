@@ -1,23 +1,22 @@
 import React, { useEffect, useState } from 'react'
 import { NavBarFoodiePage } from './NavBarFoodiePage'
-import { Footer } from './Footer'
 import style from "../css/ProductPage.module.css"
 import { useParams } from 'react-router-dom'
 import Image from "../Image/foodproduct.png"
 import { Button } from '@mui/material'
 import CheckIcon from '@mui/icons-material/Check';
 import { useDispatch, useSelector } from 'react-redux'
-import { cartProductAddFunction } from '../Redux/CartRedux/action'
+import { cartGetFunction, cartProductAddFunction } from '../Redux/CartRedux/action'
 
 export const Productpage = () => {
   const[data1,setData] = useState({})
   const id = useParams();
   const dispatch = useDispatch();
+  const [idd,setID] = useState(false)
 const {token} = useSelector((store)=>store.authReducer)
 
-// console.log("hekoo")
 
-  const FetchData = async() =>{
+  const FetchData1 = async() =>{
      try {
         fetch(`http://localhost:8080/Product?_id=${id._id}`)
         .then((res)=>res.json())
@@ -37,12 +36,20 @@ const {token} = useSelector((store)=>store.authReducer)
      
 
       dispatch(cartProductAddFunction(obj,token))
-
+      setID(!idd)
     }
 
     useEffect(()=>{
-      FetchData()
+      FetchData1()
     },[])
+
+    const FetchData = async (token) =>{
+      dispatch(cartGetFunction(token))
+  }
+  useEffect(()=>{
+  FetchData(token)
+  },[token,idd])
+  
 
   return (
     <div>
@@ -76,7 +83,7 @@ const {token} = useSelector((store)=>store.authReducer)
            </div>
      
   
-      <Footer />
+    
     </div>
   )
 }

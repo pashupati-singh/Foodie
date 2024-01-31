@@ -4,15 +4,9 @@ import { MiddleContent } from './MiddleContent'
 import {Link} from "react-router-dom"
 import { useSelector } from 'react-redux'
 export const NavBar1 = () => {
-  // const[show,setShow] = useState(false)
   const {name} = useSelector((store)=>store.authReducer)
   const {isAuth} = useSelector((store)=>store.authReducer)
 
-  // if(isAuth){
-  //   setShow(true)
-  // }
-
-  console.log(name)
 
   return (
     <nav>

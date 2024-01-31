@@ -4,18 +4,21 @@ import { useSelector } from 'react-redux';
 
 
 export const Page = ({handlePage}) => {
-    const itemsPerPage = 3
-    const[page,setPage] = useState(0)
-    const {data} = useSelector((store)=>store.foodReducer);
-   
+  const itemsPerPage = 3;
+  const [page, setPage] = useState(1);
+  const { data } = useSelector((store) => store.foodReducer);
 
-    const handleChange = (event, value) => {
-        setPage(value);
-        const startIndex = (value - 1) * itemsPerPage;
-        const endIndex = value * itemsPerPage;
-        const displayedData = data.slice(startIndex, endIndex);
-        handlePage(displayedData)
-      };
+  useEffect(() => {
+    const startIndex = (page - 1) * itemsPerPage;
+    const endIndex = page * itemsPerPage;
+    const displayedData = data.slice(startIndex, endIndex);
+    handlePage(displayedData);
+  }, [page, data, handlePage]);
+
+  const handleChange = (event, value) => {
+    setPage(value);
+  };
+
 
       return (
         <div>

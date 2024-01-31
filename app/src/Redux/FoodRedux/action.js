@@ -6,7 +6,7 @@ export const foodFunction  = (text) => (dispatch) => {
     dispatch({type:FOOD_REQUEST})
     axios.get(`http://localhost:8080/Product`).then((res)=>{
     // console.log(res.data)
-    dispatch({type:FOOD_SUCCESS,payload:res.data})
+    dispatch({type:FOOD_SUCCESS,payload:res.data,payload1:text})
 }
     )
     .catch(()=>dispatch({type:FOOD_FAILURE}))

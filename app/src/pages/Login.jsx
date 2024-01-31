@@ -1,40 +1,49 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import {useDispatch, useSelector} from "react-redux"
-import style from "../css/login.module.css"
+import { useDispatch, useSelector } from 'react-redux';
+import style from '../css/login.module.css';
 import { LoginFunction } from '../Redux/AuthRedux/action';
 import { Navigate } from 'react-router-dom';
 
-
 export const Login = () => {
-    const [email,setEmail] = useState("");
-      const[password,setPassword] = useState("");
-      const dispatch =useDispatch();
-      const {isAuth} = useSelector((store)=>store.authReducer)
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  // const [isAuth, setIsAuth] = useState(false); // Add this line
+  const dispatch = useDispatch();
+  const { isAuth } = useSelector((store) => store.authReducer);
 
-        const handleLogin = (e) => {
-          e.preventDefault();
-          console.log(email,password)
-          const object = {email,password}
-              dispatch(LoginFunction(object))
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const object = { email, password };
+    dispatch(LoginFunction(object));
+  };
 
-        };
-        if(isAuth){
-          return <Navigate to={"/"} />
-        }
+  // useEffect(() => {
+  //   const storedAuth = localStorage.getItem('isAuth');
+  //   if (storedAuth) {
+  //     setIsAuth(JSON.parse(storedAuth));
+  //   }
+  // }, []);
+
+  // useEffect(() => {
+  //   localStorage.setItem('isAuth', JSON.stringify(isAuth));
+  // }, [isAuth]);
+
+  if (isAuth) {
+    return <Navigate to={'/'} />;
+  }
+
   return (
     <div className={style.LoginBox}>
-    <Container component="main" maxWidth="xs">
+      <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
           sx={{
@@ -44,10 +53,8 @@ export const Login = () => {
             alignItems: 'center',
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-           
-          </Avatar>
-          <Typography component="h1" variant="h5" color={"CaptionText"} >
+          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}></Avatar>
+          <Typography component="h1" variant="h5" color={'caption.text'}>
             Sign in
           </Typography>
           <Box component="form" onSubmit={handleLogin} noValidate sx={{ mt: 1 }}>
@@ -61,7 +68,7 @@ export const Login = () => {
               autoComplete="email"
               autoFocus
               value={email}
-              onChange={(e)=>setEmail(e.target.value)}
+              onChange={(e) => setEmail(e.target.value)}
             />
             <TextField
               margin="normal"
@@ -73,14 +80,9 @@ export const Login = () => {
               id="password"
               autoComplete="current-password"
               value={password}
-            onChange={(e)=>setPassword(e.target.value)}
+              onChange={(e) => setPassword(e.target.value)}
             />
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-            >
+            <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
               Sign In
             </Button>
             <Grid container>
@@ -97,31 +99,7 @@ export const Login = () => {
             </Grid>
           </Box>
         </Box>
-      </Container> 
-
+      </Container>
     </div>
-  )
-}
-
-
-/* 
-
-
-
-
-export default function SignIn() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
-  };
-
-  return (
-    <ThemeProvider theme={defaultTheme}>
-     
-    </ThemeProvider>
   );
-}  */
+};
