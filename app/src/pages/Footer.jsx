@@ -17,27 +17,27 @@ export const Footer = () => {
             <div>
               <div className={style.col}>
                 <div className={style.column}>
-                  <a className={style.link} href="about-taxtim">The Foodie Story</a>
-                  <a className={style.link} href="data-security">Security and Trust</a>
-                  <a className={style.link} href="affiliate-signup">Become an Affiliate</a>
+                  <a className={style.link} href="#">The Foodie Story</a>
+                  <a className={style.link} href="#">Security and Trust</a>
+                  <a className={style.link} href="#">Become an Affiliate</a>
                 </div>
 
                 <div className="column">
-                  <a className={style.link} href="how-tim-works">How Foodie Works</a>
-                  <a className={style.link} href="services">What Foodie Costs</a>
-                  <a className={style.link} href="tos#refunds">Return Policy</a>
-                  <a className={style.link} href="jobs">Jobs at Foodie</a>
+                  <a className={style.link} href="#">How Foodie Works</a>
+                  <a className={style.link} href="#">What Foodie Costs</a>
+                  <a className={style.link} href="#">Return Policy</a>
+                  <a className={style.link} href="#">Jobs at Foodie</a>
                 </div>
 
                 <div className="column">
-                  <a className={style.link} href="services/clerk-assist">Clerk Assist</a>
-                  <a className={style.link} href="services/mobile-vehicle-logbook">
+                  <a className={style.link} href="#">Clerk Assist</a>
+                  <a className={style.link} href="#">
                     Vehicle Logbook
                   </a>
-                  <a className={style.link} href="services/expense-tracker-app">
+                  <a className={style.link} href="#">
                     Expense Tracker App
                   </a>
-                  <a className={style.link} href="small-business">Small Business Tax</a>
+                  <a className={style.link} href="#">Small Business Tax</a>
                 </div>
               </div>
             </div>
@@ -48,51 +48,51 @@ export const Footer = () => {
 
             <div className="col">
               <div className="column">
-                <a className={style.link} href="help/ask-a-tax-question?source=footer">
+                <a className={style.link} href="#">
                   Ask a Tax Question
                 </a>
 
-                <a className={style.link} href="calculators">Food near by you</a>
-                <a className={style.link} href="help">Step-by-step Guides</a>
-                <a className={style.link} href="answers/">Food Q &amp; A</a>
+                <a className={style.link} href="#">Food near by you</a>
+                <a className={style.link} href="#">Step-by-step Guides</a>
+                <a className={style.link} href="#">Food Q &amp; A</a>
               </div>
               <div className="column">
-                <a className={style.link} href="get-started?register">Register for Foodie</a>
-                <a className={style.link} href="blog/">Foodie Blog</a>
-                <a className={style.link} href="free-tax-season-reminders">Famous Food</a>
-                <a className={style.link} href="contact-us">Contact Us</a>
+                <a className={style.link} href="#">Register for Foodie</a>
+                <a className={style.link} href="#">Foodie Blog</a>
+                <a className={style.link} href="#">Famous Food</a>
+                <a className={style.link} href="#">Contact Us</a>
               </div>
             </div>
           </div>
         </div>
 
         <div className="social-container">
-          <a className={style.link} href="" target="_blank">
+          <a className={style.link} href="#" target="_blank">
           <a className={style.link}><TwitterIcon/></a>
             {/* <i class="social fab fa-twitter"></i> */}
           </a>{" "}
           &nbsp;
-          <a className={style.link} href="" target="_blank">
+          <a className={style.link} href="#" target="_blank">
           <a className={style.link}><FacebookIcon/></a>
             {/* <i class="social fab fa-facebook"></i> */}
           </a>{" "}
           &nbsp;
-          <a className={style.link} href="" target="_blank">
+          <a className={style.link} href="#" target="_blank">
           <a className={style.link}><InstagramIcon/></a>
             
             {/* <i class="social fab fa-instagram"></i> */}
           </a>{" "}
           &nbsp;
-          <a className={style.link} href="" target="_blank">
+          <a className={style.link} href="#" target="_blank">
           <a className={style.link}><LinkedInIcon/></a>
             {/* <i class="social fab fa-linkedin"></i> */}
           </a>
         </div>
 
         <div className=" terms-container">
-          <a className={style.link} href="tos">Terms of Service</a> |{" "}
-          <a className={style.link} href="privacy">Privacy Policy</a> |{" "}
-          <a className={style.link} href="sitemap">Sitemap</a>
+          <a className={style.link} href="#">Terms of Service</a> |{" "}
+          <a className={style.link} href="#">Privacy Policy</a> |{" "}
+          <a className={style.link} href="#">Sitemap</a>
           <br />
           Copyright ©️ 2023 TaxTim | Human Robot Pty Ltd. All Rights
           Reserved.

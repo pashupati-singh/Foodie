@@ -25,7 +25,7 @@ export const CartListPage = ({_id,image,food,description,quantity,price,rating,h
             item._id === itemId ? { ...item, quantity: item.quantity + 1 }: item
         )
       );
-      console.log(cartItems);
+      // console.log(cartItems);
     };
 
       

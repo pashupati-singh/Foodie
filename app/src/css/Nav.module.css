@@ -38,3 +38,36 @@
 .HomeIcon:hover{
     color: rgb(99, 226, 99);
 }
+
+.left{
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    
+}
+
+.left a {
+    margin: 5px 5px 5px 5px;
+    padding: 5px 5px 5px 5px;
+    
+    text-decoration: none;
+    list-style: none;
+    color: black;
+}
+
+@media screen and (max-width : 1000px) and (min-width:700px){
+    .nav img{
+        width: 150px;
+        height: 100px;
+    }
+}
+
+
+@media screen and (max-width:700px){
+    .nav img{
+        margin-left: -10%;
+        width: 120px;
+        height: 100px;
+    }
+
+}

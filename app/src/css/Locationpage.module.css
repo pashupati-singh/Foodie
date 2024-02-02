@@ -8,7 +8,6 @@
 .locationBox{
     width: 100%;
     height: 50%;
-    
     padding: 10px;
     margin: 50px;
     display: grid;
@@ -28,4 +27,49 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.locationBox a{
+    text-decoration: none;
+    list-style: none;
+    color: black;
+}
+
+@media screen and (max-width : 1000px) and (min-width:700px){
+    .locationBox{
+        width: 100%;
+        height: 50%;
+        padding: 10px;
+        margin: 50px;
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+    }
+    .locationText{
+        font-size: 2.6rem;
+        line-height: 1;
+        font-weight: 400;
+        color: rgb(28, 28, 28);
+    }
+}
+
+@media screen and (max-width : 700px){
+    .locationBox{
+        width: 100%;
+        height: 50%;
+        padding: 10px;
+        margin: 50px;
+        display: grid;
+        place-items: center;
+        grid-template-columns: repeat(1,1fr);
+    }
+    .locationText{
+        font-size: 2rem;
+        line-height: 1;
+        font-weight: 400;
+        color: rgb(28, 28, 28);
+    }
+    .smallBox{
+        width: 50%;
+        height: 45px;
+    }
 }

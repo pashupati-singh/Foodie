@@ -5,7 +5,6 @@
     box-shadow: rgba(240, 130, 40, 0.993) 0px 3px 8px;
 }
 .box1{  
-    /* margin-top: -30px; */
     width: 30%;
     height: 500px;
     background-color: rgb(223, 209, 62);
@@ -39,4 +38,37 @@
 b{
     font-size: 20px;
     font-weight: 600;
+}
+@media screen and (max-width : 1000px) and (min-width:700px){
+    .box2{  
+        width: 50%;
+        height: 540px;
+    }
+    .box1{  
+        width: 40%;
+        height: 540px;       
+    }
+    
+}
+
+
+@media screen and (max-width:700px){
+    .box2{  
+        width: 50%;
+        height: 540px;
+    }
+    .box1{  
+        width: 40%;
+        height: 540px;       
+    }
+    .edit1{
+        font-size: 12px;
+        width: 50%;
+        height: 30px;
+    }
+    .edit2{
+        font-size: 12px;
+        width: 50%;
+        height: 30px;
+    }
 }

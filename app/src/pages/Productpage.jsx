@@ -7,6 +7,7 @@ import { Button } from '@mui/material'
 import CheckIcon from '@mui/icons-material/Check';
 import { useDispatch, useSelector } from 'react-redux'
 import { cartGetFunction, cartProductAddFunction } from '../Redux/CartRedux/action'
+import { Footer } from './Footer'
 
 export const Productpage = () => {
   const[data1,setData] = useState({})
@@ -71,7 +72,7 @@ const {token} = useSelector((store)=>store.authReducer)
               <div style={{display:"flex",justifyContent:"space-evenly",alignItems:"end"}}>
                 {/* {changed? */}
                 <Button className={style.edit1} onClick={handleCardButton} variant="contained">Add to Cart</Button>
-                // :<Button className={style.edit3} variant="contained"><CheckIcon /> Added to cart</Button>
+                 {/* :<Button className={style.edit3} variant="contained"><CheckIcon /> Added to cart</Button> */}
                 {/* } */}
               
               <Button className={style.edit2} variant="contained">Buy now</Button>
@@ -83,7 +84,7 @@ const {token} = useSelector((store)=>store.authReducer)
            </div>
      
   
-    
+    <Footer />
     </div>
   )
 }

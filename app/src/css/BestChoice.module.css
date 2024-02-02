@@ -29,11 +29,43 @@
     width: 100px; 
       height: 100px; 
       border-radius: 50%;
-      overflow: hidden;
-      border: 5px solid #fff;
   }
  .name{
     font-weight:500;
     font-style: inherit;
     font-size: 20px;
  }
+
+ @media screen and (max-width : 1000px) and (min-width:700px){
+    .imgDiv {
+        width: 80px; 
+          height: 80px; 
+          border-radius: 50%;
+      }
+      .name{
+        font-weight:500;
+        font-style: inherit;
+        font-size: 18px;
+     }
+     .container{
+        height: 150px;
+    }
+}
+
+
+@media screen and (max-width:700px){
+    
+    .imgDiv {
+        width: 60px; 
+          height: 60px; 
+          border-radius: 50%;
+      }
+      .name{
+        font-weight:400;
+        font-style: inherit;
+        font-size: 15px;
+     }
+     .container{
+        height: 120px;
+    }
+}

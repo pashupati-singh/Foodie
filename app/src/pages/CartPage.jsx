@@ -42,9 +42,9 @@ export const CartPage = ({cartData}) => {
       }
 
 
-  useEffect(()=>{
-    FetchData(token)
-  },[token,id])
+  // useEffect(()=>{
+  //   FetchData(token)
+  // },[token,id])
 
   return (
     <div>

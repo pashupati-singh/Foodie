@@ -9,23 +9,23 @@ export const BestChoice = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
 
 
-    const prevSlide = () => {
-        setCurrentIndex(Math.max(currentIndex - 1, 0));
-      };
+  //   const prevSlide = () => {
+  //       setCurrentIndex(Math.max(currentIndex - 1, 0));
+  //     };
     
-      const nextSlide = () => {
-        setCurrentIndex(Math.min(currentIndex + 1, array.length - itemsToShow));
-      };
+  //     const nextSlide = () => {
+  //       setCurrentIndex(Math.min(currentIndex + 1, array.length - itemsToShow));
+  //     };
 
        
-  const updateButtons = () => {
-    return {
-      displayPrev: currentIndex === 0 ? 'none' : 'block',
-      displayNext: currentIndex + itemsToShow >= array.length ? 'none' : 'block',
-    };
-  };
+  // const updateButtons = () => {
+  //   return {
+  //     displayPrev: currentIndex === 0 ? 'none' : 'block',
+  //     displayNext: currentIndex + itemsToShow >= array.length ? 'none' : 'block',
+  //   };
+  // };
 
-  const { displayPrev, displayNext } = updateButtons();
+  // const { displayPrev, displayNext } = updateButtons();
     
   return (
     <div className={style.container2}>
@@ -34,7 +34,6 @@ export const BestChoice = () => {
      <div className={style.container}>
         {array.map((el)=>(
         <div key={el.id} className={style.container1} >
-            {/* <div>Best Food</div> */}
             <div className={style.imgDiv}>
             <img className={style.img} src={el.image} alt="err" />
             </div>
@@ -43,8 +42,6 @@ export const BestChoice = () => {
         </div>
      ))}</div>
      </div>
-    <button style={{ position: 'absolute', top: '40%', transform: 'translateY(-50%)', left: 0, cursor: 'pointer', backgroundColor: '#3498db', color: '#fff', border: 'none', padding: '10px', fontSize: '16px', outline: 'none', display: displayPrev }} onClick={prevSlide}>❮</button>
-    <button style={{ position: 'absolute', top: '40%', transform: 'translateY(-50%)', right: 0, cursor: 'pointer', backgroundColor: '#3498db', color: '#fff', border: 'none', padding: '10px', fontSize: '16px', outline: 'none', display: displayNext }} onClick={nextSlide}>❯</button>
   </div>
   )
 }

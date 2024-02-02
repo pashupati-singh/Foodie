@@ -18,10 +18,10 @@ export const Locationpage = () => {
 
       <div className={style.locationBox}>
         <p className={style.smallBox}>
-          <Link to={"/product/Lucknow"}>Lucknow</Link> <span style={{ marginLeft: "10px" }}>{">"}</span>
+          <Link to={"/product/Lucknow"}>Lucknow</Link> <span style={{ marginLeft: "10px" }}>{">>>"}</span>
         </p>
         <p className={style.smallBox}>
-          <Link to={"/product/patna"}>Patna</Link><span style={{ marginLeft: "10px" }}>{">"}</span>
+          <Link to={"/product/patna"}>Patna</Link><span style={{ marginLeft: "10px" }}>{">>>"}</span>
         </p>
         <p className={style.smallBox}>Noida<span style={{ marginLeft: "10px" }}>{">"}</span></p>
         <p className={style.smallBox}>Greater Noida<span style={{ marginLeft: "10px" }}>{">"}</span></p>

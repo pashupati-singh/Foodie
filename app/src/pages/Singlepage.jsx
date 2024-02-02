@@ -26,7 +26,7 @@ export const Singlepage = () => {
   const handlePage = (page) => {
       setData1(page)
 }
-  console.log(data);
+  // console.log(data);
 
 const handleSearching = (value)=>{
   if(value !== ""){
@@ -49,12 +49,12 @@ const handleSearching = (value)=>{
     <FilterPage />
     <p style={{display:"flex", justifyContent:"flex-start", fontSize:"30px",fontWeight:"inherit" , marginLeft:"30px",marginBottom:"4ss0px",fontFamily:"sans-serif"}}>Delivery in {text}</p>
     <div >
-      {searchT? <div style={{display:"grid" , gridTemplateColumns:"repeat(3,1fr)", columnGap:"-100px",rowGap:"50px", marginTop:"10px"}}>{food.map((el)=>(
-      <div key={el._id} className={style.mapped} style={{width:"300px",height:"300px",boxShadow: "rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px",borderRadius:"10px",margin:"20px",marginTop:"-20px"}}>
+      {searchT? <div className={style.card}>{food.map((el)=>(
+      <div key={el._id} className={style.mapped} >
           <Foodpage key={el._id} {...el} />
       </div>
-      ))}</div> :<div style={{display:"grid" , gridTemplateColumns:"repeat(3,1fr)", columnGap:"-100px",rowGap:"50px", marginTop:"10px"}}>{FoodData.map((el)=>(
-      <div key={el._id} className={style.mapped} style={{width:"300px",height:"300px",boxShadow: "rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px",borderRadius:"10px",margin:"20px",marginTop:"-20px"}}>
+      ))}</div> :<div className={style.card}>{FoodData.map((el)=>(
+      <div key={el._id} className={style.mapped}>
           <Foodpage key={el._id} {...el} />
       </div>
       ))}</div>}
