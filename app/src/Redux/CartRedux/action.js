@@ -1,4 +1,4 @@
-import {CARTDELETESUCCESS, CARTFAILURE, CARTGETSUCCESS,CARTPOSTSUCCESS, CARTREQUEST } from "./actiontype"
+import {CARTALLDATADELETE, CARTDELETESUCCESS, CARTFAILURE, CARTGETSUCCESS,CARTPOSTSUCCESS, CARTREQUEST } from "./actiontype"
 import axios from 'axios'
 
 
@@ -48,4 +48,19 @@ export const cartProductDeleteFunction = (_id,token) => (dispatch) =>{
     })
     .catch((err)=>dispatch({type:CARTFAILURE}))
 
+}
+
+export const cartDataDelete = (token) => (dispatch) =>{
+    dispatch({type:CARTREQUEST});
+    axios.post(`http://localhost:8080/cart/clearCart`,{
+        headers:{
+            'Content-Type' : "application/json",
+            authorization  : `Bearer ${token}`
+        }
+    })
+    .then((res)=>{
+        alert(res.data)
+        dispatch({type:CARTALLDATADELETE})
+    })
+    .catch((err)=>dispatch({type:CARTFAILURE}))
 }

@@ -45,6 +45,7 @@ export const CartListPage = ({_id,image,food,description,quantity,price,rating,h
     },[number])
 
   const handleDelete = () =>{
+    // console.log(_id);
     handlingDelete(_id,token)
   }
 

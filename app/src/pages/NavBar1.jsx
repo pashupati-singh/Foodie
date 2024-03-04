@@ -88,15 +88,3 @@ export const NavBar1 = () => {
     </nav>
   )
 }
-
-/*
-import * as React from 'react';
-
-export default function TemporaryDrawer() {
-
-
-  return (
-   
-  );
-}
-*/

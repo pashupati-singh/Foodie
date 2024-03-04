@@ -23,6 +23,15 @@
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    font-weight: 500;
+   
+    
+}
+.login p a{
+    list-style: none;
+    text-decoration: none;
+    color: rgb(10, 10, 10);
+    padding: 10px;
 }
 
 .home{

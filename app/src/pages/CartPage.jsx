@@ -10,18 +10,18 @@ export const CartPage = ({cartData}) => {
   const navigate = useNavigate();
    const {cart} = useSelector((store)=>store.cartReducer)
    const dispatch = useDispatch()
-   const [id,setID] = useState("")
-   const {token} = useSelector((store)=>store.authReducer)
    const [totalAmount, setTotalAmount] = useState(0);
    const [final, setFinal] = useState(0);
    const { isAuth } = useSelector((store) => store.authReducer);
-  
+   const {token} = useSelector((store)=>store.authReducer)
+   const [deleteFlag, setDeleteFlag] = useState(false);
+
    useEffect(() => {
     if(!isAuth){
       navigate("/login")
     }
     calculateTotalAmount();
-  }, [cart,isAuth,navigate]);
+  }, [cart,isAuth,navigate,deleteFlag]);
 
   
  
@@ -30,27 +30,25 @@ export const CartPage = ({cartData}) => {
     const amount = cart.reduce((total, item) => total + item.price, 0);
     setFinal(amount-40)
     setTotalAmount(amount);
-    cartData(final)
+    cartData(amount-40)
   };
 
   const handlingDelete = (_id,token) =>{
-    setID(_id)
+    
     dispatch(cartProductDeleteFunction(_id,token))
+    setDeleteFlag(!deleteFlag)
   } 
-      const FetchData = async (token) =>{
-          dispatch(cartGetFunction(token))
-      }
 
-
-  // useEffect(()=>{
-  //   FetchData(token)
-  // },[token,id])
+  
+  useEffect(() => {
+   
+       dispatch(cartGetFunction(token));
+  
+  }, [token,deleteFlag]); 
+  
 
   return (
     <div>
-
-  
-    
     <div className={style.container}>
     <div className={style.container1}>
 

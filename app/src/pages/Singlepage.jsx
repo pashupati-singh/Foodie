@@ -13,21 +13,14 @@ import { Page } from './Pagination';
 export const Singlepage = () => {
   const[searchT,setSearchT] = useState(false);
   const[data1,setData1] = useState([])
-  const {data} = useSelector((store)=>store.foodReducer);
   const [food,setFood] = useState([])
   const {text} = useParams();
  const disptach = useDispatch()
  
-// const {token} = useSelector((store)=>store.authReducer)
-   
   const FoodData = data1.filter((el)=>(el.location===text))
-
-  //  console.log(token);
   const handlePage = (page) => {
       setData1(page)
 }
-  // console.log(data);
-
 const handleSearching = (value)=>{
   if(value !== ""){
     setSearchT(true);

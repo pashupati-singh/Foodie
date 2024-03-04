@@ -1,4 +1,4 @@
-import {  CARTDELETESUCCESS, CARTFAILURE, CARTGETSUCCESS, CARTPOSTSUCCESS, CARTREQUEST } from "./actiontype"
+import {  CARTALLDATADELETE, CARTDELETESUCCESS, CARTFAILURE, CARTGETSUCCESS, CARTPOSTSUCCESS, CARTREQUEST } from "./actiontype"
 
 
 
@@ -17,6 +17,8 @@ export const reducer = (state=initialState,action)=>{
         case CARTGETSUCCESS : return {...state,loading:false,cart:action.payload}
 
         case CARTDELETESUCCESS : return {...state,loading:false,msgg:action.payload}
+
+        case CARTALLDATADELETE : return {...state,cart:[]}
         
         default : return state
     }

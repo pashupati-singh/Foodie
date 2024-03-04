@@ -10,6 +10,8 @@ import { AddressPage } from './AddressPage';
 import { PaymentPage } from './PaymentPage';
 import { CartPage } from './CartPage';
 import Image from "../Image/foodies.png"
+import { Footer } from './Footer';
+import { Link } from 'react-router-dom';
 
 
 const steps = ['Bag', 'Address', 'Payment'];
@@ -18,7 +20,7 @@ const steps = ['Bag', 'Address', 'Payment'];
 export const StepperFun = () => {
   const [address,setAddress] = useState("");
   const [cart,setCart] = useState("");
-    const [activeStep, setActiveStep] = React.useState(0);
+  const [activeStep, setActiveStep] = React.useState(0);
   const [skipped, setSkipped] = React.useState(new Set());
 
   const isStepOptional = (step) => {
@@ -43,21 +45,6 @@ export const StepperFun = () => {
   const handleBack = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
-
-  // const handleSkip = () => {
-  //   if (!isStepOptional(activeStep)) {
-  //     // You probably want to guard against something like this,
-  //     // it should never occur unless someone's actively trying to break something.
-  //     throw new Error("You can't skip a step that isn't optional.");
-  //   }
-
-  //   setActiveStep((prevActiveStep) => prevActiveStep + 1);
-  //   setSkipped((prevSkipped) => {
-  //     const newSkipped = new Set(prevSkipped.values());
-  //     newSkipped.add(activeStep);
-  //     return newSkipped;
-  //   });
-  // };
 
   const handleReset = () => {
     setActiveStep(0);
@@ -84,7 +71,6 @@ export const StepperFun = () => {
 
   const cartData = (value)=>{
     setCart(value)
-//  handleNext()
 }
 
   return (
@@ -92,11 +78,8 @@ export const StepperFun = () => {
     
     <Box sx={{ width: '100%' }}>
        <div className={style.nav}> 
-    <img src={Image} alt="err" />
+       <Link to={`/product/Lucknow`}><img src={Image} alt="err" /></Link>
     <div className={style.stepper}>
-
-   {/* <StepperFun /> */}
-    
       <Stepper activeStep={activeStep}>
         {steps.map((label, index) => {
           const stepProps = {};
@@ -132,7 +115,6 @@ export const StepperFun = () => {
         </React.Fragment>
       ) : (
         <React.Fragment>
-          {/* <Typography sx={{ mt: 2, mb: 1 }}>Step {activeStep + 1}</Typography> */}
           <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
             <Button
               color="inherit"
@@ -144,13 +126,13 @@ export const StepperFun = () => {
             </Button>
             <Box sx={{ flex: '1 1 auto' }} />
             
+           {activeStep === 0 ?<Button variant="contained" color='secondary' style={{width:"20%" , marginTop:"15px",marginBottom:"10px"}} onClick={handleNext}>Place Order</Button>:activeStep === 1 && address !== "" ?<Button variant="contained" disabled color='secondary' style={{width:"20%" , marginTop:"15px",marginBottom:"10px"}} onClick={handleNext}>Next</Button>:""}
 
-            <Button variant="contained" color='secondary' style={{width:"20%" , marginTop:"15px"}} onClick={handleNext}>
-              {activeStep === 0 ? 'Place Order' : activeStep === 1 ? 'Next' : 'Finish'  }
-            </Button>
+            
           </Box>
         </React.Fragment>
             )}
+            <Footer />
     </Box> 
   )
 }

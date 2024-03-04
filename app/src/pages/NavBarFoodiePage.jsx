@@ -49,7 +49,7 @@ export const NavBarFoodiePage = ({handleSearching}) => {
            <Link to={"/resturant"}>Add Resturant</Link>
            <Link  to={"/sign"}>Sign Up</Link>
            <Link>About us</Link>
-           <Link>Contact us</Link>
+           <Link to={'/cart'}>Cart</Link>
            <Link></Link>
 
       <Divider />
@@ -71,23 +71,33 @@ export const NavBarFoodiePage = ({handleSearching}) => {
   const handleClick = () =>{
     handleSearching(search)
   }
-  useEffect(()=>{
-    setCartValue(cart.length);
-  },[cartValue])
-  
-useEffect(() => {
-  const FetchData = async (token) => {
-    dispatch(cartGetFunction(token));
-  };
 
-  FetchData(token);
-}, [token]); 
+  useEffect(() => {
+    const FetchData = async (token) => {
+      await dispatch(cartGetFunction(token));
+    };
+  
+    FetchData(token)
+      .then(() => {
+        setCartValue(cart.length);
+      })
+      .catch((error) => {
+        console.error('Error fetching cart data:', error);
+      });
+  }, [token]); 
+  
+  // Update cartValue on initial render
+  useEffect(() => {
+    setCartValue(cart.length);
+  }, [cart.length]);
+  
+  
 
   return (
     <div>
         <div className={style.nav1}>
         <div className={style.nav}>
-        <Link to={`/product/${text}`}><img src={image} alt="error" /></Link>
+        <Link to={`/product/Lucknow`}><img src={image} alt="error" /></Link>
         
         <div className={style.search} style={{display:"flex",justifyContent:"center",alignItems:"center"}}>
             <TextField 
@@ -119,14 +129,16 @@ useEffect(() => {
                 <p>
                 {isAuth? <h3>{name}</h3>:<Link to="/login">Login</Link>}
                 </p>
-                <p style={{textAlign:"center"}}>
+                <p style={{textAlign:"center", listStyle:"none"}}>
                     <Link to="/sign">Signup</Link>
                 </p>
                 <p style={{textAlign:"center"}}>
+                    {isAuth? <div>
                     <Link to="/cart">
                     <Badge badgeContent={cartValue} color="primary">
                     <AddShoppingCartIcon color="action" />
                     </Badge></Link>
+                    </div>:""}
                 </p>
             </div>
 
