@@ -16,7 +16,6 @@ import { Navigate } from 'react-router-dom';
 export const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  // const [isAuth, setIsAuth] = useState(false); // Add this line
   const dispatch = useDispatch();
   const { isAuth } = useSelector((store) => store.authReducer);
 
@@ -26,16 +25,6 @@ export const Login = () => {
     dispatch(LoginFunction(object));
   };
 
-  // useEffect(() => {
-  //   const storedAuth = localStorage.getItem('isAuth');
-  //   if (storedAuth) {
-  //     setIsAuth(JSON.parse(storedAuth));
-  //   }
-  // }, []);
-
-  // useEffect(() => {
-  //   localStorage.setItem('isAuth', JSON.stringify(isAuth));
-  // }, [isAuth]);
 
   if (isAuth) {
     return <Navigate to={'/'} />;

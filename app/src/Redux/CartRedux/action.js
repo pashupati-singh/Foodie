@@ -1,16 +1,16 @@
-import {CARTALLDATADELETE, CARTDELETESUCCESS, CARTFAILURE, CARTGETSUCCESS,CARTPOSTSUCCESS, CARTREQUEST } from "./actiontype"
+import {CARTALLDATADELETE, CARTDELETESUCCESS, CARTFAILURE, CARTGETSUCCESS,CARTPOSTSUCCESS, CARTQUANTITY, CARTREQUEST } from "./actiontype"
 import axios from 'axios'
 
 
 export const cartProductAddFunction = (obj,token) => (dispatch) =>{
     dispatch({type:CARTREQUEST})
-    axios.post("http://localhost:8080/cart/addCart",obj,{
+    axios.post("https://e-com-backend-xxz8.onrender.com/cart/addCart",obj,{
         headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`
           }
     }).then((res)=>{
-        alert("added");
+        alert(res.data.msg);
         dispatch({type:CARTPOSTSUCCESS,payload:res.data})
     })
     .catch((err)=>dispatch({type:CARTFAILURE}))
@@ -20,14 +20,13 @@ export const cartProductAddFunction = (obj,token) => (dispatch) =>{
 export const cartGetFunction = (token) => (dispatch) =>{
     dispatch({ type: CARTREQUEST });
 
-    axios.get(`http://localhost:8080/cart`, {
+    axios.get(`https://e-com-backend-xxz8.onrender.com/cart`, {
         headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`
         }
     })
     .then((res) => {
-        // console.log(res.data);
         dispatch({ type: CARTGETSUCCESS, payload: res.data });
     })
     .catch((err) => dispatch({ type: CARTFAILURE }));
@@ -35,8 +34,8 @@ export const cartGetFunction = (token) => (dispatch) =>{
 
 export const cartProductDeleteFunction = (_id,token) => (dispatch) =>{
     dispatch({type:CARTREQUEST})
-    // console.log(token,_id);
-    axios.delete(`http://localhost:8080/cart/delete?_id=${_id}`,{
+  
+    axios.delete(`https://e-com-backend-xxz8.onrender.com/cart/delete?_id=${_id}`,{
         headers:{
             'Content-Type' : "application/json",
             authorization  : `Bearer ${token}`
@@ -52,7 +51,7 @@ export const cartProductDeleteFunction = (_id,token) => (dispatch) =>{
 
 export const cartDataDelete = (token) => (dispatch) =>{
     dispatch({type:CARTREQUEST});
-    axios.post(`http://localhost:8080/cart/clearCart`,{
+    axios.post(`https://e-com-backend-xxz8.onrender.com/cart/clearCart`,{
         headers:{
             'Content-Type' : "application/json",
             authorization  : `Bearer ${token}`
@@ -63,4 +62,23 @@ export const cartDataDelete = (token) => (dispatch) =>{
         dispatch({type:CARTALLDATADELETE})
     })
     .catch((err)=>dispatch({type:CARTFAILURE}))
+}
+
+
+
+export const cartItemQuantity = (obj,token) => (dispatch) =>{
+    dispatch({type:CARTREQUEST});
+    axios.post(`http://localhost:8080/cart/quantity`,obj,{
+        headers:{
+            'Content-Type' : "application/json",
+            authorization  : `Bearer ${token}`
+        }
+    })
+    .then((res)=>{
+        // alert(res.data.msg)
+        dispatch({type:CARTQUANTITY})
+    })
+    .catch((err)=>{
+        dispatch({type:CARTFAILURE})
+    })
 }

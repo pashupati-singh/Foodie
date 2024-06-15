@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { NavBarFoodiePage } from './NavBarFoodiePage'
 import style from "../css/ProductPage.module.css"
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import Image from "../Image/foodproduct.png"
 import { Button } from '@mui/material'
 import CheckIcon from '@mui/icons-material/Check';
@@ -34,8 +34,6 @@ const {token} = useSelector((store)=>store.authReducer)
      const obj = {
         description,food,image,location,price,quantity,rating,restaurant,type
      }
-     
-
       dispatch(cartProductAddFunction(obj,token))
       setID(!idd)
     }
@@ -75,7 +73,7 @@ const {token} = useSelector((store)=>store.authReducer)
                  {/* :<Button className={style.edit3} variant="contained"><CheckIcon /> Added to cart</Button> */}
                 {/* } */}
               
-              <Button className={style.edit2} variant="contained">Buy now</Button>
+             <Link> <Button className={style.edit2} variant="contained">Buy now</Button></Link>
               </div>
              </div>
              <div className={style.box2}>

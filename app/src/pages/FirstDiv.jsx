@@ -6,7 +6,7 @@ export const FirstDiv = () => {
   return (
     <div>{array.map((el)=>(
         <div key={el.id} >
-            <img src={el.image} alt="err" />
+            {/* <img src={el.image} alt="err" /> */}
             <h3>{el.name}</h3>
         </div>
     ))}</div>

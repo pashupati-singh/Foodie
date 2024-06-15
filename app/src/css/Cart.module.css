@@ -52,19 +52,7 @@ background-color: rgb(193, 235, 235);
     color: #555;
   }
   
-  /* .quantitybuttons {
-    display: flex;
-    justify-content: end;
-    align-items: center;
-  }
   
-  .quantitybutton {
-    background-color: #f0f0f0;
-    border: 1px solid #ccc;
-    padding: 5px;
-    cursor: pointer;
-  }
-   */
   .totalamount {
     margin-top: 20px;
     font-size: 18px;

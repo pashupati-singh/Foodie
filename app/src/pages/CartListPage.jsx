@@ -1,51 +1,26 @@
 
 
-import React, { useEffect, useState } from 'react'
-import {  useSelector } from 'react-redux';
+import React from 'react'
+import {   useSelector } from 'react-redux';
 import style from "../css/Cart.module.css"
 import { Button, Rating } from '@mui/material';
 import CancelIcon from '@mui/icons-material/Cancel';
 
-export const CartListPage = ({_id,image,food,description,quantity,price,rating,handlingDelete}) => {
-    const [number,setNum] = useState(quantity);
-    const {cart} = useSelector((store)=>store.cartReducer)
-    const [cartItems,setCartItems] = useState(cart)
+export const CartListPage = ({_id,image,food,description,quantity,price,rating,handlingDelete,handleUpdate}) => {
     const {token} = useSelector((store)=>store.authReducer)
    
-    const getTotalAmount = () => {
-      return "heelo"
-      // cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
-    };
+
   
-    const handleIncrease = (itemId) => {
-      setNum(number+1)
-      console.log(itemId);
-      setCartItems((prevItems) =>
-        prevItems.map((item) =>
-            item._id === itemId ? { ...item, quantity: item.quantity + 1 }: item
-        )
-      );
-      // console.log(cartItems);
+    const handleQuantity = (_id,value) => {
+      const obj = {_id,value}
+      handleUpdate(obj,token)
     };
 
-      
-    const handleDecrease = (itemId) => {
-      setNum(number-1)
-      setCartItems((prevItems) =>
-        prevItems.map((item) =>
-          item._id === itemId && item.quantity > 1
-            ? { ...item, quantity: item.quantity - 1 }
-            : item
-        )
-      );
-    };
+    
 
-    useEffect(()=>{
-      console.log(getTotalAmount());
-    },[number])
+
 
   const handleDelete = () =>{
-    // console.log(_id);
     handlingDelete(_id,token)
   }
 
@@ -64,9 +39,9 @@ export const CartListPage = ({_id,image,food,description,quantity,price,rating,h
 
         </div>
         <div style={{display:"grid" , gridTemplateRows:"repeat(3,1fr)"}}>
-        <button onClick={() => handleIncrease(_id)}>+</button>
+        <button onClick={() => handleQuantity(_id,+1)}>+</button>
         <h3>{quantity}</h3>
-          <button onClick={() => handleDecrease(_id)}>-</button>
+          <button disabled = {quantity<=1} onClick={() => handleQuantity(_id,-1)}>-</button>
       </div>
       <div >
         

@@ -9,24 +9,6 @@ export const BestChoice = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
 
 
-  //   const prevSlide = () => {
-  //       setCurrentIndex(Math.max(currentIndex - 1, 0));
-  //     };
-    
-  //     const nextSlide = () => {
-  //       setCurrentIndex(Math.min(currentIndex + 1, array.length - itemsToShow));
-  //     };
-
-       
-  // const updateButtons = () => {
-  //   return {
-  //     displayPrev: currentIndex === 0 ? 'none' : 'block',
-  //     displayNext: currentIndex + itemsToShow >= array.length ? 'none' : 'block',
-  //   };
-  // };
-
-  // const { displayPrev, displayNext } = updateButtons();
-    
   return (
     <div className={style.container2}>
      <p style={{display:"flex", justifyContent:"flex-start", fontSize:"30px",fontWeight:"inherit" , marginLeft:"30px",marginBottom:"10px"}}>Best Deal's for You </p>

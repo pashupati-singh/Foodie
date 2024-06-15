@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { cartGetFunction, cartProductDeleteFunction } from '../Redux/CartRedux/action'
+import { cartGetFunction, cartItemQuantity, cartProductDeleteFunction } from '../Redux/CartRedux/action'
 import style from "../css/Cart.module.css"
 import { CartListPage } from './CartListPage'
 import LocalOfferIcon from '@mui/icons-material/LocalOffer';
@@ -21,20 +21,25 @@ export const CartPage = ({cartData}) => {
       navigate("/login")
     }
     calculateTotalAmount();
+    dispatch(cartGetFunction(token));
   }, [cart,isAuth,navigate,deleteFlag]);
 
   
  
 
   const calculateTotalAmount = () => {
-    const amount = cart.reduce((total, item) => total + item.price, 0);
+    const amount = cart.reduce((total, item) => total + item.price * item.quantity, 0);
     setFinal(amount-40)
     setTotalAmount(amount);
     cartData(amount-40)
   };
 
+  const handleUpdate = (obj,token) => {
+    dispatch(cartItemQuantity(obj,token))
+    setDeleteFlag(!deleteFlag)
+  }
+
   const handlingDelete = (_id,token) =>{
-    
     dispatch(cartProductDeleteFunction(_id,token))
     setDeleteFlag(!deleteFlag)
   } 
@@ -55,7 +60,7 @@ export const CartPage = ({cartData}) => {
 
     {cart.map((item) => (
       <div key={item._id} className={style.productcard}>
-        <CartListPage {...item} handlingDelete = {handlingDelete} />
+        <CartListPage {...item} handlingDelete = {handlingDelete} handleUpdate = {handleUpdate}/>
   </div>
   ))}
 
